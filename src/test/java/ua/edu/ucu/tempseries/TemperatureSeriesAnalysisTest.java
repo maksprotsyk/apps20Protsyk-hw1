@@ -192,10 +192,10 @@ public class TemperatureSeriesAnalysisTest {
         double[] oneElement = {3.0};
         series.addTemps(oneElement);
         TempSummaryStatistics result = series.summaryStatistics();
-        assertEquals(oneElement[0], result.avgTemp, delta);
-        assertEquals(0.0, result.devTemp, delta);
-        assertEquals(oneElement[0], result.minTemp, delta);
-        assertEquals(oneElement[0], result.maxTemp, delta);
+        assertEquals(oneElement[0], result.getAvg(), delta);
+        assertEquals(0.0, result.getDev(), delta);
+        assertEquals(oneElement[0], result.getMin(), delta);
+        assertEquals(oneElement[0], result.getMax(), delta);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -208,10 +208,10 @@ public class TemperatureSeriesAnalysisTest {
         double[] manyElements = {-2.0, -3.0, 7.0, 5.0};
         series.addTemps(manyElements);
         TempSummaryStatistics result = series.summaryStatistics();
-        assertEquals(1.75, result.avgTemp, delta);
-        assertEquals(18.6875, result.devTemp, delta);
-        assertEquals(-3.0, result.minTemp, delta);
-        assertEquals(7.0, result.maxTemp, delta);
+        assertEquals(1.75, result.getAvg(), delta);
+        assertEquals(18.6875, result.getDev(), delta);
+        assertEquals(-3.0, result.getMin(), delta);
+        assertEquals(7.0, result.getMax(), delta);
     }
 
     @Test

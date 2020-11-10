@@ -7,7 +7,8 @@ import java.util.InputMismatchException;
 import java.lang.Math;
 
 public class TemperatureSeriesAnalysis {
-    final int defaultBuff = 5;
+    final static int defaultBuff = 5;
+    final static double minimalTemp = -273.0;
     public double[] tempSeries;
     public int length;
     public int buffer;
@@ -90,7 +91,7 @@ public class TemperatureSeriesAnalysis {
 
     public int addTemps(double... temps) {
         for (double temperature: temps){
-            if (temperature < -273){
+            if (temperature < minimalTemp){
                 throw new InputMismatchException();
             }
         }
