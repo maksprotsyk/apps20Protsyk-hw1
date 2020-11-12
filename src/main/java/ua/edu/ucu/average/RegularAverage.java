@@ -7,7 +7,7 @@ public class RegularAverage extends AverageCounter {
         return value;
     }
 
-    public double average(double[] items, int length){
+    public double average(double[] items, int length) {
         return calcAverage(items, length);
     }
 }

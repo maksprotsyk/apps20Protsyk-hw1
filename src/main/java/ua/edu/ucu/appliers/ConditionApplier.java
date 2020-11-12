@@ -3,7 +3,7 @@ package ua.edu.ucu.appliers;
 // allows us to implement classes that filter
 // items with filter function
 public abstract class ConditionApplier {
-    public abstract Boolean keyFunction(double value);
+    public abstract boolean keyFunction(double value);
 
     protected double[] apply(double[] items, int length) {
         int newLength = 0;

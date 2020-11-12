@@ -5,26 +5,27 @@ public class TempSummaryStatistics {
     private final double devTemp;
     private final double minTemp;
     private final double maxTemp;
-    public TempSummaryStatistics(TemperatureSeriesAnalysis series) throws IllegalArgumentException{
+    public TempSummaryStatistics(TemperatureSeriesAnalysis series)
+            throws IllegalArgumentException {
         avgTemp = series.average();
         devTemp = series.deviation();
         minTemp = series.min();
         maxTemp = series.max();
     }
 
-    public double getAvg(){
+    public double getAvg() {
         return avgTemp;
     }
 
-    public double getDev(){
+    public double getDev() {
         return devTemp;
     }
 
-    public double getMin(){
+    public double getMin() {
         return minTemp;
     }
 
-    public double getMax(){
+    public double getMax() {
         return maxTemp;
     }
 

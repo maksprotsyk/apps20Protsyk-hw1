@@ -1,12 +1,13 @@
-package ua.edu.ucu.extrem_values;
+package ua.edu.ucu.extremvals;
 
 // allows to find the closest value to the given one
 // in the array of doubles (to the given index)
 public class ClosestFinder extends ExtremFinder {
-    double num;
+    private double num;
 
-    public double findClosest(double[] items, int length, double num) throws IllegalArgumentException{
-        this.num = num;
+    public double findClosest(double[] items, int length, double newNum)
+            throws IllegalArgumentException {
+        num = newNum;
         return findExtVal(items, length);
     }
 

@@ -7,12 +7,12 @@ import java.util.InputMismatchException;
 import java.lang.Math;
 
 public class TemperatureSeriesAnalysis {
-    final static int defaultBuff = 5;
-    final static double minimalTemp = -273.0;
-    public double[] tempSeries;
-    public int length;
-    public int buffer;
-    StatisticCalculator calculator;
+    private static final int DefaultBuff = 5;
+    public static final double MinimalTemp = -273.0;
+    private double[] tempSeries;
+    private int length;
+    private int buffer;
+    private StatisticCalculator calculator;
 
 
     public TemperatureSeriesAnalysis() {
@@ -25,24 +25,30 @@ public class TemperatureSeriesAnalysis {
 
     }
 
-    private void reInit(){
+    private void reInit() {
         length = 0;
-        tempSeries = new double[defaultBuff];
-        buffer = defaultBuff;
+        tempSeries = new double[DefaultBuff];
+        buffer = DefaultBuff;
         calculator = new StatisticCalculator();
 
     }
 
-    private void changeBuffer(int newBuffer){
+    private void changeBuffer(int newBuffer) {
         double[] newSeries = new double[newBuffer];
         int newLength = Math.min(buffer, newBuffer);
-        System.arraycopy(tempSeries, 0, newSeries, 0, newLength);
+        System.arraycopy(
+                tempSeries,
+                0,
+                newSeries,
+                0,
+                newLength
+        );
         tempSeries = newSeries;
         length = newLength;
         buffer = newBuffer;
     }
 
-    private void addTemp(double temp){
+    private void addTemp(double temp) {
         if (length == buffer){
             changeBuffer(2 * buffer);
         }
@@ -50,14 +56,14 @@ public class TemperatureSeriesAnalysis {
         length += 1;
     }
 
-    public double average() throws IllegalArgumentException{
+    public double average() throws IllegalArgumentException {
         if (length == 0){
             throw new IllegalArgumentException();
         }
         return calculator.average(tempSeries, length);
     }
 
-    public double deviation() throws IllegalArgumentException{
+    public double deviation() throws IllegalArgumentException {
         return calculator.deviation(tempSeries, length);
     }
 
@@ -69,11 +75,12 @@ public class TemperatureSeriesAnalysis {
         return calculator.max(tempSeries, length);
     }
 
-    public double findTempClosestToZero() throws IllegalArgumentException{
+    public double findTempClosestToZero() throws IllegalArgumentException {
         return findTempClosestToValue(0);
     }
 
-    public double findTempClosestToValue(double tempValue) throws IllegalArgumentException{
+    public double findTempClosestToValue(double tempValue)
+            throws IllegalArgumentException {
         return calculator.findClosest(tempSeries, length, tempValue);
     }
 
@@ -85,17 +92,18 @@ public class TemperatureSeriesAnalysis {
         return calculator.findGreater(tempSeries, length, tempValue);
     }
 
-    public TempSummaryStatistics summaryStatistics() throws IllegalArgumentException {
+    public TempSummaryStatistics summaryStatistics()
+            throws IllegalArgumentException {
         return new TempSummaryStatistics(this);
     }
 
     public int addTemps(double... temps) {
         for (double temperature: temps){
-            if (temperature < minimalTemp){
+            if (temperature < MinimalTemp) {
                 throw new InputMismatchException();
             }
         }
-        for (double temperature: temps){
+        for (double temperature: temps) {
             addTemp(temperature);
         }
         return 0;
