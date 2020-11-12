@@ -4,11 +4,10 @@ import ua.edu.ucu.calculator.StatisticCalculator;
 
 import java.util.InputMismatchException;
 
-import java.lang.Math;
 
 public class TemperatureSeriesAnalysis {
-    private static final int DefaultBuff = 5;
-    public static final double MinimalTemp = -273.0;
+    private static final int DEFAULT_BUFF = 5;
+    private static final double MINIMAL_TEMP = -273.0;
     private double[] tempSeries;
     private int length;
     private int buffer;
@@ -27,8 +26,8 @@ public class TemperatureSeriesAnalysis {
 
     private void reInit() {
         length = 0;
-        tempSeries = new double[DefaultBuff];
-        buffer = DefaultBuff;
+        tempSeries = new double[DEFAULT_BUFF];
+        buffer = DEFAULT_BUFF;
         calculator = new StatisticCalculator();
 
     }
@@ -49,7 +48,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     private void addTemp(double temp) {
-        if (length == buffer){
+        if (length == buffer) {
             changeBuffer(2 * buffer);
         }
         tempSeries[length] = temp;
@@ -57,7 +56,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double average() throws IllegalArgumentException {
-        if (length == 0){
+        if (length == 0) {
             throw new IllegalArgumentException();
         }
         return calculator.average(tempSeries, length);
@@ -98,8 +97,8 @@ public class TemperatureSeriesAnalysis {
     }
 
     public int addTemps(double... temps) {
-        for (double temperature: temps){
-            if (temperature < MinimalTemp) {
+        for (double temperature: temps) {
+            if (temperature < MINIMAL_TEMP) {
                 throw new InputMismatchException();
             }
         }

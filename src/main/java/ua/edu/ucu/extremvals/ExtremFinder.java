@@ -6,10 +6,10 @@ import ua.edu.ucu.appliers.FunctionApplier;
 // of argument for which key function reaches the maximum value
 // (to the given index)
 public abstract class ExtremFinder implements FunctionApplier {
-    private static final double delta = 0.00001;
+    private static final double DELTA = 0.00001;
     protected double findExtVal(double[] items, int length)
             throws IllegalArgumentException {
-        if (length <= 0){
+        if (length <= 0) {
             throw new IllegalArgumentException();
         }
         double max = items[0];
@@ -21,7 +21,7 @@ public abstract class ExtremFinder implements FunctionApplier {
                 max = items[i];
                 maxVal = newVal;
             }
-            else if ((Math.abs(maxVal - newVal) < delta) && (items[i] > max)) {
+            else if ((Math.abs(maxVal - newVal) < DELTA) && (items[i] > max)) {
                 max = items[i];
             }
         }

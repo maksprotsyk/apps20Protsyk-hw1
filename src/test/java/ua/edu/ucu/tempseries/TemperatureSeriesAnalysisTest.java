@@ -9,7 +9,7 @@ import java.util.InputMismatchException;
 
 public class TemperatureSeriesAnalysisTest {
     TemperatureSeriesAnalysis series;
-    final double delta = 0.00001;
+    private static final double DELTA = 0.00001;
 
     @Before
     public void createEmpty(){
@@ -21,7 +21,7 @@ public class TemperatureSeriesAnalysisTest {
         double[] oneElement = {100.0};
         double correct = 100.0;
         series.addTemps(oneElement);
-        assertEquals(correct, series.average(), delta);
+        assertEquals(correct, series.average(), DELTA);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -34,7 +34,7 @@ public class TemperatureSeriesAnalysisTest {
         double[] manyElements = {-2.0, -3.0, 7.0, 5.0};
         double correct = 1.75;
         series.addTemps(manyElements);
-        assertEquals(correct, series.average(), delta);
+        assertEquals(correct, series.average(), DELTA);
     }
 
     @Test
@@ -42,7 +42,7 @@ public class TemperatureSeriesAnalysisTest {
         double[] oneElement = {3.0};
         double correct = 0.0;
         series.addTemps(oneElement);
-        assertEquals(correct, series.deviation(), delta);
+        assertEquals(correct, series.deviation(), DELTA);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -55,7 +55,7 @@ public class TemperatureSeriesAnalysisTest {
         double[] manyElements = {-2.0, -3.0, 7.0, 5.0};
         double correct = 18.6875;
         series.addTemps(manyElements);
-        assertEquals(correct, series.deviation(), delta);
+        assertEquals(correct, series.deviation(), DELTA);
     }
 
     @Test
@@ -63,7 +63,7 @@ public class TemperatureSeriesAnalysisTest {
         double[] oneElement = {3.0};
         double correct = 3.0;
         series.addTemps(oneElement);
-        assertEquals(correct, series.min(), delta);
+        assertEquals(correct, series.min(), DELTA);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -76,7 +76,7 @@ public class TemperatureSeriesAnalysisTest {
         double[] manyElements = {-2.0, -3.0, 7.0, 5.0};
         double correct = -3.0;
         series.addTemps(manyElements);
-        assertEquals(correct, series.min(), delta);
+        assertEquals(correct, series.min(), DELTA);
     }
 
     @Test
@@ -84,7 +84,7 @@ public class TemperatureSeriesAnalysisTest {
         double[] oneElement = {3.0};
         double correct = 3.0;
         series.addTemps(oneElement);
-        assertEquals(correct, series.max(), delta);
+        assertEquals(correct, series.max(), DELTA);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -97,7 +97,7 @@ public class TemperatureSeriesAnalysisTest {
         double[] manyElements = {-2.0, -3.0, 7.0, 5.0};
         double correct = 7.0;
         series.addTemps(manyElements);
-        assertEquals(correct, series.max(), delta);
+        assertEquals(correct, series.max(), DELTA);
     }
 
     @Test
@@ -105,7 +105,7 @@ public class TemperatureSeriesAnalysisTest {
         double[] oneElement = {3.0};
         double correct = 3.0;
         series.addTemps(oneElement);
-        assertEquals(correct, series.findTempClosestToZero(), delta);
+        assertEquals(correct, series.findTempClosestToZero(), DELTA);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -118,7 +118,7 @@ public class TemperatureSeriesAnalysisTest {
         double[] manyElements = {-2.0, -3.0, 2.0, 5.0};
         double correct = 2.0;
         series.addTemps(manyElements);
-        assertEquals(correct, series.findTempClosestToZero(), delta);
+        assertEquals(correct, series.findTempClosestToZero(), DELTA);
     }
 
     @Test
@@ -126,7 +126,7 @@ public class TemperatureSeriesAnalysisTest {
         double[] oneElement = {3.0};
         double correct = 3.0;
         series.addTemps(oneElement);
-        assertEquals(correct, series.findTempClosestToValue(6.0), delta);
+        assertEquals(correct, series.findTempClosestToValue(6.0), DELTA);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -139,7 +139,7 @@ public class TemperatureSeriesAnalysisTest {
         double[] manyElements = {-2.0, -3.0, 7.0, 5.0};
         double correct = 5.0;
         series.addTemps(manyElements);
-        assertEquals(correct, series.findTempClosestToValue(4.0), delta);
+        assertEquals(correct, series.findTempClosestToValue(4.0), DELTA);
     }
 
     @Test
@@ -147,14 +147,14 @@ public class TemperatureSeriesAnalysisTest {
         double[] oneElement = {3.0};
         double[] correct = {3.0};
         series.addTemps(oneElement);
-        assertArrayEquals(correct, series.findTempsLessThen(4.0), delta);
+        assertArrayEquals(correct, series.findTempsLessThen(4.0), DELTA);
     }
 
 
     @Test
     public void testFindLessEmpty() {
         double[] correct = {};
-        assertArrayEquals(correct, series.findTempsLessThen(4.0), delta);
+        assertArrayEquals(correct, series.findTempsLessThen(4.0), DELTA);
     }
 
     @Test
@@ -162,7 +162,7 @@ public class TemperatureSeriesAnalysisTest {
         double[] manyElements = {-2.0, -3.0, 7.0, 5.0};
         double[] correct = {-2.0, -3.0};
         series.addTemps(manyElements);
-        assertArrayEquals(correct, series.findTempsLessThen(4.0), delta);
+        assertArrayEquals(correct, series.findTempsLessThen(4.0), DELTA);
     }
 
     @Test
@@ -170,13 +170,13 @@ public class TemperatureSeriesAnalysisTest {
         double[] oneElement = {3.0};
         double[] correct = {};
         series.addTemps(oneElement);
-        assertArrayEquals(correct, series.findTempsGreaterThen(4.0), delta);
+        assertArrayEquals(correct, series.findTempsGreaterThen(4.0), DELTA);
     }
 
     @Test
     public void testFindGreaterEmpty() {
         double[] correct = {};
-        assertArrayEquals(correct, series.findTempsGreaterThen(4.0), delta);
+        assertArrayEquals(correct, series.findTempsGreaterThen(4.0), DELTA);
     }
 
     @Test
@@ -184,7 +184,7 @@ public class TemperatureSeriesAnalysisTest {
         double[] manyElements = {-2.0, -3.0, 7.0, 5.0};
         double[] correct = {7.0, 5.0};
         series.addTemps(manyElements);
-        assertArrayEquals(correct, series.findTempsGreaterThen(4.0), delta);
+        assertArrayEquals(correct, series.findTempsGreaterThen(4.0), DELTA);
     }
 
     @Test
@@ -192,10 +192,10 @@ public class TemperatureSeriesAnalysisTest {
         double[] oneElement = {3.0};
         series.addTemps(oneElement);
         TempSummaryStatistics result = series.summaryStatistics();
-        assertEquals(oneElement[0], result.getAvg(), delta);
-        assertEquals(0.0, result.getDev(), delta);
-        assertEquals(oneElement[0], result.getMin(), delta);
-        assertEquals(oneElement[0], result.getMax(), delta);
+        assertEquals(oneElement[0], result.getAvg(), DELTA);
+        assertEquals(0.0, result.getDev(), DELTA);
+        assertEquals(oneElement[0], result.getMin(), DELTA);
+        assertEquals(oneElement[0], result.getMax(), DELTA);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -208,10 +208,10 @@ public class TemperatureSeriesAnalysisTest {
         double[] manyElements = {-2.0, -3.0, 7.0, 5.0};
         series.addTemps(manyElements);
         TempSummaryStatistics result = series.summaryStatistics();
-        assertEquals(1.75, result.getAvg(), delta);
-        assertEquals(18.6875, result.getDev(), delta);
-        assertEquals(-3.0, result.getMin(), delta);
-        assertEquals(7.0, result.getMax(), delta);
+        assertEquals(1.75, result.getAvg(), DELTA);
+        assertEquals(18.6875, result.getDev(), DELTA);
+        assertEquals(-3.0, result.getMin(), DELTA);
+        assertEquals(7.0, result.getMax(), DELTA);
     }
 
     @Test
@@ -221,7 +221,7 @@ public class TemperatureSeriesAnalysisTest {
         series.addTemps(manyElements);
         series.addTemps(newElements);
         assertEquals(9, series.getLength());
-        assertEquals(3.0, series.average(), delta);
+        assertEquals(3.0, series.average(), DELTA);
 
     }
 
@@ -238,9 +238,6 @@ public class TemperatureSeriesAnalysisTest {
         double[] manyElements = {-2.0, -3.0, 7.0, 5.0};
         TemperatureSeriesAnalysis series = new TemperatureSeriesAnalysis(manyElements);
         assertEquals(4, series.getLength());
-        assertEquals(1.75, series.average(), delta);
+        assertEquals(1.75, series.average(), DELTA);
     }
-
-
-
 }
