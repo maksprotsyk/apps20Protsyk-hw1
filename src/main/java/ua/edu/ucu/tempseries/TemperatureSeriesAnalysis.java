@@ -108,4 +108,8 @@ public class TemperatureSeriesAnalysis {
         }
         return 0;
     }
+
+    public int getLength() {
+        return length;
+    }
 }

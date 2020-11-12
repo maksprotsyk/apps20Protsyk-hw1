@@ -217,15 +217,11 @@ public class TemperatureSeriesAnalysisTest {
     @Test
     public void testAddMany() {
         double[] manyElements = {-2.0, -3.0, 7.0, 5.0};
-        double[] newElements = {1.0, 2.0, -3.0, 4.0, 10.0};
-        int correctBuff = 10;
-        int correctLength = 9;
-        double correctLast = 10.0;
+        double[] newElements = {1.0, 2.0, -3.0, 4.0, 16.0};
         series.addTemps(manyElements);
         series.addTemps(newElements);
-        assertEquals(correctBuff, series.buffer);
-        assertEquals(correctLength, series.length);
-        assertEquals(correctLast, series.tempSeries[correctLength - 1], delta);
+        assertEquals(9, series.getLength());
+        assertEquals(3.0, series.average(), delta);
 
     }
 
@@ -240,13 +236,9 @@ public class TemperatureSeriesAnalysisTest {
     @Test
     public void testInitWithSeries(){
         double[] manyElements = {-2.0, -3.0, 7.0, 5.0};
-        int correctBuff = 5;
-        int correctLength = 4;
-        double correctLast = 5.0;
         TemperatureSeriesAnalysis series = new TemperatureSeriesAnalysis(manyElements);
-        assertEquals(correctBuff, series.buffer);
-        assertEquals(correctLength, series.length);
-        assertEquals(correctLast, series.tempSeries[correctLength - 1], delta);
+        assertEquals(4, series.getLength());
+        assertEquals(1.75, series.average(), delta);
     }
 
 
