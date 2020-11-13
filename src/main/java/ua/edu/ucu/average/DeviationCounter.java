@@ -9,7 +9,7 @@ public class DeviationCounter extends AverageCounter {
 
     public double deviation(double[] items, int length, double itemsAverage) {
         average = itemsAverage;
-        return calcAverage(items, length);
+        return Math.sqrt(calcAverage(items, length));
     }
     public double keyFunction(double value) {
         return (value - average) * (value - average);

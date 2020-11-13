@@ -7,7 +7,7 @@ import ua.edu.ucu.appliers.ConditionApplier;
 public class GreaterThanFinder extends ConditionApplier {
     private double compValue;
     public boolean keyFunction(double value) {
-        return compValue < value;
+        return compValue <= value;
     }
     public double[] findGreater(double[] items,
                                 int length,

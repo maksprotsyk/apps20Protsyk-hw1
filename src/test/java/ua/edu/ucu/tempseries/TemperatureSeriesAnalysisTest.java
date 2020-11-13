@@ -53,7 +53,7 @@ public class TemperatureSeriesAnalysisTest {
     @Test
     public void testDeviationMany() {
         double[] manyElements = {-2.0, -3.0, 7.0, 5.0};
-        double correct = 18.6875;
+        double correct = Math.sqrt(18.6875);
         series.addTemps(manyElements);
         assertEquals(correct, series.deviation(), DELTA);
     }
@@ -209,7 +209,7 @@ public class TemperatureSeriesAnalysisTest {
         series.addTemps(manyElements);
         TempSummaryStatistics result = series.summaryStatistics();
         assertEquals(1.75, result.getAvg(), DELTA);
-        assertEquals(18.6875, result.getDev(), DELTA);
+        assertEquals(Math.sqrt(18.6875), result.getDev(), DELTA);
         assertEquals(-3.0, result.getMin(), DELTA);
         assertEquals(7.0, result.getMax(), DELTA);
     }
