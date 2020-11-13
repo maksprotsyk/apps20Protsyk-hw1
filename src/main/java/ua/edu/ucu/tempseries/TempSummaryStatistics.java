@@ -13,6 +13,10 @@ public class TempSummaryStatistics {
         maxTemp = series.max();
     }
 
+    private  TempSummaryStatistics() throws IllegalArgumentException{
+        throw new IllegalArgumentException();
+    }
+
     public double getAvg() {
         return avgTemp;
     }
