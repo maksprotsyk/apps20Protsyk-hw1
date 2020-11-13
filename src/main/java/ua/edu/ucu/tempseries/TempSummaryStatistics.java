@@ -13,7 +13,7 @@ public class TempSummaryStatistics {
         maxTemp = series.max();
     }
 
-    private  TempSummaryStatistics() throws IllegalArgumentException{
+    public TempSummaryStatistics() throws IllegalArgumentException {
         throw new IllegalArgumentException();
     }
 

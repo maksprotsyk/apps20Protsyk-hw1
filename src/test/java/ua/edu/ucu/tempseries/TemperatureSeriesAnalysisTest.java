@@ -214,6 +214,11 @@ public class TemperatureSeriesAnalysisTest {
         assertEquals(7.0, result.getMax(), DELTA);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testStatisticsEmptyConstructor(){
+        TempSummaryStatistics result = new TempSummaryStatistics();
+    }
+
     @Test
     public void testAddMany() {
         double[] manyElements = {-2.0, -3.0, 7.0, 5.0};
