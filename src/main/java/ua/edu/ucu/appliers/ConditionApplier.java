@@ -16,9 +16,6 @@ public abstract class ConditionApplier {
         int count = 0;
         for (int i = 0; i < length; i++) {
             if (keyFunction(items[i])) {
-                if (count == newLength) {
-                    break;
-                }
                 newItems[count] = items[i];
                 count += 1;
             }
