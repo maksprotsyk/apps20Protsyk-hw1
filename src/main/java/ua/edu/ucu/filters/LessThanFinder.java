@@ -7,7 +7,7 @@ import ua.edu.ucu.appliers.ConditionApplier;
 public class LessThanFinder extends ConditionApplier {
     private double compValue;
     public boolean keyFunction(double value) {
-        return compValue >= value;
+        return compValue > value;
     }
     public double[] findLess(double[] items,
                              int length,
