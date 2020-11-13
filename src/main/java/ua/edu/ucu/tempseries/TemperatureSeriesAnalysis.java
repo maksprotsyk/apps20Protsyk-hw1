@@ -105,7 +105,7 @@ public class TemperatureSeriesAnalysis {
         for (double temperature: temps) {
             addTemp(temperature);
         }
-        return 0;
+        return length;
     }
 
     public int getLength() {

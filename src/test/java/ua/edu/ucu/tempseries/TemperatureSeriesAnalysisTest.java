@@ -219,8 +219,7 @@ public class TemperatureSeriesAnalysisTest {
         double[] manyElements = {-2.0, -3.0, 7.0, 5.0};
         double[] newElements = {1.0, 2.0, -3.0, 4.0, 16.0};
         series.addTemps(manyElements);
-        series.addTemps(newElements);
-        assertEquals(9, series.getLength());
+        assertEquals(9, series.addTemps(newElements));
         assertEquals(3.0, series.average(), DELTA);
 
     }
